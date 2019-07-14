@@ -6,10 +6,6 @@ beforeAll(async () => {
     mock = apiMocker();
 });
 
-afterAll(() => {
-    mock.disable();
-});
-
 const doTest = async () => {
     const s = new Stripe('key');
     const usage = await s.usageRecords.create('id', {
