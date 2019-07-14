@@ -7,7 +7,7 @@ Mitm().on('request', (req, res) => {
 });
 
 const agent = new https.Agent({keepAlive: true});
-const request = () => {
+function request () {
     return new Promise((resolve, reject) => {
         https.get('https://example.com', {agent}, (res) => {
             res.on('data', d => {});
@@ -16,10 +16,8 @@ const request = () => {
     });
 }
 
-async function main() {
+(async function main() {
     for (let i=1; i < 100; i++) {
-        const foo = await request();
+        await request();
     }
-}
-
-main();
+})();
