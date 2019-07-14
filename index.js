@@ -3,7 +3,7 @@ const https = require("https");
 
 
 Mitm().on('request', (req, res) => {
-    res.end(JSON.stringify({id:'hello'.repeat(50)}));
+    res.end('hello'.repeat(50));
 });
 
 const agent = new https.Agent({keepAlive: true});
