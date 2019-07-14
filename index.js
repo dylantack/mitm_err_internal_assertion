@@ -7,17 +7,14 @@ Mitm().on('request', (req, res) => {
 });
 
 const agent = new https.Agent({keepAlive: true});
-function request () {
-    return new Promise((resolve, reject) => {
-        https.get('https://example.com', {agent}, (res) => {
-            res.on('data', d => {});
-            res.on('end', resolve);
-        });
-    });
-}
 
-(async function main() {
+(async () => {
     for (let i=1; i < 100; i++) {
-        await request();
+        await new Promise((resolve, reject) => {
+            https.get('https://example.com', {agent}, (res) => {
+                res.on('data', d => {});
+                res.on('end', resolve);
+            });
+        });
     }
 })();
