@@ -12,7 +12,6 @@ const doTest = async () => {
         quantity: 10,
         timestamp: 10,
     });
-    expect(usage.id).toContain('hello');
 };
 
 for (let i=1; i < 100; i++) {
