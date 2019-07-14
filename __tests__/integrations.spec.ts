@@ -1,9 +1,9 @@
-import apiMocker from './mock-apis';
+import Mitm from 'mitm';
 import Stripe from 'stripe';
 
-let mock: ReturnType<typeof apiMocker>;
-beforeAll(async () => {
-    mock = apiMocker();
+const mitm = Mitm();
+mitm.on('request', (req, res) => {
+    res.end(JSON.stringify({id:'hello'.repeat(50)}));
 });
 
 const doTest = async () => {
